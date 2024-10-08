@@ -1,30 +1,34 @@
 # Site settings
-title: Grayscale
-email: your-email@domain.com
-url: https://example.github.io
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+title: Srihith BB's Portfolio
+email: srihith.bb@example.com
+description: "Computer Vision Engineer | AR/VR Enthusiast | MS Computer Science Student at Stony Brook University"
+baseurl: ""
+url: "https://srihithbb.github.io"
 
-# Color settings (hex-codes without the leading hash-tag)
-color:
-  primary-dark: '#000000'
-  links: '#219ab3'
-
-# Footer settings
-footer: Your Website
-
-# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
-social:
-  - title: twitter
-    url: https://twitter.com/SBootstrap
-  - title: facebook
-    url:
-  - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
-  - title: github
-    url: https://github.com/IronSummitMedia/startbootstrap
+# Social settings
+twitter_username: 
+github_username: srihithbb
+facebook_username: 
+instagram_username: 
 
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+# Custom settings
+location: "New York, USA"
+skills:
+  - Python
+  - C/C++
+  - Java
+  - Machine Learning
+  - Computer Vision
+  - AR/VR Development
+education:
+  - degree: "M.S. Computer Science"
+    institution: "Stony Brook University (SUNY Stony Brook)"
+    year: "Expected July 2026"
+  - degree: "B.Tech Mechanical Engineering"
+    institution: "Indian Institute of Technology Bombay (IIT Bombay)"
+    year: "May 2022"
+    gpa: "8.07/10"
