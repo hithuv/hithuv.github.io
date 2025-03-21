@@ -1161,30 +1161,87 @@ model predictions, enabling data-driven decision making for supply chain manager
         </section>
       
         <section class="contact-info">
+          <!-- The icons will be positioned fixed so they move over the entire viewport -->
           <style>
-            .contact-info ul {
-              display: flex;
-              align-items: center;
-              gap: 20px;
-              padding: 0;
-              margin: 0;
-              list-style: none;
+            .bouncing-icon {
+                position: fixed;
+                width: 80px;
+                height: 80px;
+                cursor: pointer;
+                z-index: 1000; /* Ensures the icons appear on top */
             }
           </style>
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/in/b-srihith/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="80" height="80">
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/srihith.b/" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="80" height="80">
-              </a>
-            </li>
-          </ul>
+          <!-- Icons without text -->
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="bouncing-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="bouncing-icon">
         </section>
       </article>
+      
+      <script>
+      document.addEventListener("DOMContentLoaded", function(){
+          // Get all bouncing icons
+          const icons = document.querySelectorAll(".bouncing-icon");
+          const iconsData = [];
+          
+          // Initialize each icon with a random position and a random diagonal velocity
+          icons.forEach(icon => {
+              const containerWidth = window.innerWidth;
+              const containerHeight = window.innerHeight;
+              const iconWidth = icon.offsetWidth;
+              const iconHeight = icon.offsetHeight;
+              const startX = Math.random() * (containerWidth - iconWidth);
+              const startY = Math.random() * (containerHeight - iconHeight);
+              
+              iconsData.push({
+                  el: icon,
+                  x: startX,
+                  y: startY,
+                  // Random speed between 2 and 5 pixels per frame in each direction, with random initial direction
+                  dx: (Math.random() < 0.5 ? -1 : 1) * (2 + Math.random() * 3),
+                  dy: (Math.random() < 0.5 ? -1 : 1) * (2 + Math.random() * 3)
+              });
+              
+              icon.style.left = startX + "px";
+              icon.style.top = startY + "px";
+              
+              // Attach a click event to each icon
+              icon.addEventListener("click", function(){
+                  alert("Icon clicked: " + icon.alt);
+              });
+          });
+          
+          // Animation loop using requestAnimationFrame
+          function animate(){
+              iconsData.forEach(data => {
+                  // Update position
+                  data.x += data.dx;
+                  data.y += data.dy;
+                  const iconWidth = data.el.offsetWidth;
+                  const iconHeight = data.el.offsetHeight;
+                  
+                  // Check horizontal boundaries
+                  if(data.x <= 0 || data.x + iconWidth >= window.innerWidth) {
+                      data.dx = -data.dx;
+                      // Ensure the icon remains within boundaries
+                      if(data.x < 0) data.x = 0;
+                      if(data.x + iconWidth > window.innerWidth) data.x = window.innerWidth - iconWidth;
+                  }
+                  
+                  // Check vertical boundaries
+                  if(data.y <= 0 || data.y + iconHeight >= window.innerHeight) {
+                      data.dy = -data.dy;
+                      if(data.y < 0) data.y = 0;
+                      if(data.y + iconHeight > window.innerHeight) data.y = window.innerHeight - iconHeight;
+                  }
+                  
+                  data.el.style.left = data.x + "px";
+                  data.el.style.top = data.y + "px";
+              });
+              requestAnimationFrame(animate);
+          }
+          animate();
+      });
+      </script>
 
     </div>
 
